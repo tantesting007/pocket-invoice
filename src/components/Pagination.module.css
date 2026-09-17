@@ -1,0 +1,11 @@
+.pagination {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.pagination button[aria-current='page'] {
+  border-color: var(--color-brand);
+  background: var(--color-brand-light);
+  color: var(--color-brand-dark);
+}

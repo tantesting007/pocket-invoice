@@ -1,0 +1,13 @@
+.card {
+  overflow: hidden;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  background: var(--color-surface);
+}
+
+@media print {
+  .card {
+    border: none;
+    border-radius: 0;
+  }
+}
