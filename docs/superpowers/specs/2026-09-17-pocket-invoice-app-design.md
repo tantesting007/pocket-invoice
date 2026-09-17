@@ -63,12 +63,15 @@ src/
     invoice.ts             – money math (PI-1 bug lives here)
     format.ts              – formatCurrency, formatDate, formatPercent
     pagination.ts          – paginate()
-    pdf.ts                 – exportInvoicePdf(invoice, company)
-  components/              – Layout, PageHeader, Button, StatusChip, Pagination,
-                             InvoiceTable, InvoiceDocument, LineItemsTable, InvoiceSummary
+    summary.ts             – getSummaryLines(invoice), shared by the UI and the PDF
+    pdf.ts                 – buildInvoicePdf / exportInvoicePdf(invoice, company)
+  components/              – Layout, PageHeader, Button, Card, StatusChip, Pagination,
+                             InvoiceTable, InvoiceDocument, LineItemsTable, InvoiceSummary, icons
   pages/                   – InvoiceListPage, InvoiceDetailPage, NotFoundPage
-  styles/global.css
+  styles/global.css        – tokens, base styles, print rules
+  styles/table.module.css  – shared table styles
   test/setup.ts            – jest-dom matchers
+  test/renderRoute.tsx     – renders the app at a URL (memory router)
 .github/workflows/ci.yml
 CLAUDE.md
 ```
@@ -128,7 +131,8 @@ $300, tax 10%. A few other invoices also have discounts.
 - A back link to `/invoices`, then the header: invoice number, status chip, and **Print**
   and **Export PDF** buttons.
 - The invoice card (`InvoiceDocument`) shows From / Bill to / Issued / Due, the line
-  items, and the summary (Subtotal, Discount, Tax (rate), Total).
+  items, and the summary (Subtotal, Discount, Tax (rate), Total). The Discount line
+  appears only when the discount is greater than 0.
 - An unknown id shows "Invoice not found" with a link back to the list.
 
 **Print:** `window.print()`. Print CSS hides everything marked `.no-print`
@@ -153,7 +157,9 @@ shadow, and sets `@page { margin: 16mm }`.
 | `lib/invoice.test.ts` | Subtotal, tax on the discounted base, total without discount (pass); **"applies the discount to the total" (fails on purpose — PI-1)** |
 | `lib/format.test.ts` | USD formatting; ISO dates are not shifted by time zone (tests run with `TZ=America/New_York`) |
 | `lib/pagination.test.ts` | Slicing, bounds, clamping, empty lists |
-| `lib/pdf.test.ts` | With jspdf mocked: saves `<number>.pdf` and passes the line-item rows to autoTable |
+| `lib/summary.test.ts` | Summary lines with and without a discount (it doesn't assert a discounted total) |
+| `lib/pdf.test.ts` | Checks the generated PDF text (`doc.output()`), the line-item rows passed to autoTable, and that the file is saved as `<number>.pdf` (jsPDF is replaced with a subclass that records calls) |
+| `components/Pagination.test.tsx`, `routes.test.tsx` | Pagination buttons; redirect, not-found page, header |
 | `services/invoiceService.test.ts` | Sort order, lookup by id, unknown id, unique ids/numbers |
 | `pages/InvoiceListPage.test.tsx` | 10 rows on page 1, next page, `?page` clamping, row click opens the details page |
 | `pages/InvoiceDetailPage.test.tsx` | Renders the invoice; Print calls `window.print`; Export calls `exportInvoicePdf` (mocked); unknown id shows not found |
