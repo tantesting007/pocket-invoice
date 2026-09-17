@@ -1,0 +1,12 @@
+.row {
+  cursor: pointer;
+}
+
+.row:hover {
+  background: #faf8ff;
+}
+
+.number {
+  font-weight: 600;
+  white-space: nowrap;
+}
