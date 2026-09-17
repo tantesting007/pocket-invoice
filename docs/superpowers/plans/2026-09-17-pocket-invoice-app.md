@@ -2209,6 +2209,7 @@ export async function buildInvoicePdf(invoice: Invoice, company: Company): Promi
     styles: { font: 'helvetica', fontSize: 10, textColor: TEXT, cellPadding: 6 },
     headStyles: { fillColor: BRAND, textColor: WHITE, fontStyle: 'bold' },
     alternateRowStyles: { fillColor: ZEBRA },
+    columnStyles: { 1: { cellWidth: 50 }, 2: { cellWidth: 90 }, 3: { cellWidth: 90 } },
     didParseCell: ({ column, cell }) => {
       if (column.index > 0) cell.styles.halign = 'right'
     },
