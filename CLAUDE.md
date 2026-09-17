@@ -12,12 +12,11 @@ Small React + TypeScript app used to demo [Retask](https://app.retask.work). It 
 
 ## Retask
 
-- Always run the Retask CLI with the demo profile: `retask --profile demo …`
 - Project **Pocket Invoice**: key `PI`, id `f49dfa4d-5466-4f1f-a5b9-9222f1a429be`, workspace `79164863-f1f9-492d-bf72-211edcea17de`
 - Useful commands:
-  - `retask --profile demo task list --project-id f49dfa4d-5466-4f1f-a5b9-9222f1a429be --pretty`
-  - `retask --profile demo task get-by-key PI-1`
-  - `retask --profile demo project-config get f49dfa4d-5466-4f1f-a5b9-9222f1a429be` (status ids: `backlog`, `todo`, `in-progress`, `in-review`, `done`, `cancelled`)
+  - `retask task list --project-id f49dfa4d-5466-4f1f-a5b9-9222f1a429be --pretty`
+  - `retask task get-by-key PI-1`
+  - `retask project-config get f49dfa4d-5466-4f1f-a5b9-9222f1a429be` (status ids: `backlog`, `todo`, `in-progress`, `in-review`, `done`, `cancelled`)
 - The board is a curated demo state. Treat it as **read-only**: don't change statuses or assignees, and don't post comments, unless explicitly asked.
 
 ## Demo seed: keep the code in sync with the board
