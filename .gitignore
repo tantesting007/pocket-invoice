@@ -23,5 +23,6 @@ dist-ssr
 *.sln
 *.sw?
 
-# Brainstorm companion mockups
+# Superpowers brainstorm mockups, specs and plans
 .superpowers/
+docs/superpowers/
