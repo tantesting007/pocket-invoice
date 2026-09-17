@@ -1,0 +1,33 @@
+.summary {
+  width: 100%;
+  max-width: 280px;
+  margin: 0 0 0 auto;
+}
+
+.line {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 4px 0;
+}
+
+.line dt {
+  color: var(--color-muted);
+}
+
+.line dd {
+  margin: 0;
+  font-variant-numeric: tabular-nums;
+}
+
+.total {
+  margin-top: 6px;
+  padding-top: 10px;
+  border-top: 1px solid var(--color-border);
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.total dt {
+  color: var(--color-text);
+}

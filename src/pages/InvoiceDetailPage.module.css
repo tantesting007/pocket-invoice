@@ -1,0 +1,15 @@
+.back {
+  display: inline-block;
+  margin-bottom: 10px;
+  color: var(--color-muted);
+  font-size: 13px;
+}
+
+.error {
+  margin-bottom: 12px;
+  padding: 8px 12px;
+  border: 1px solid #fecaca;
+  border-radius: var(--radius-sm);
+  background: #fef2f2;
+  color: var(--color-danger);
+}
