@@ -1,3 +1,8 @@
+import { createBrowserRouter, RouterProvider } from 'react-router'
+import { routes } from './routes'
+
+const router = createBrowserRouter(routes)
+
 export function App() {
-  return <h1>Pocket Invoice</h1>
+  return <RouterProvider router={router} />
 }
